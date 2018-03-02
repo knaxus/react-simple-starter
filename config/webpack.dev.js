@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -32,13 +33,24 @@ module.exports = {
           presets: ['env', 'react'],
           plugins: ['react-hot-loader/babel'],
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader', },
+          { loader: 'css-loader', }
+        ],
+      },
     ],
   },
   resolve: { // allow to import both js and jsx
     extensions: ['.js', '.jsx'],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../public/index.html'),
+    }),
   ]
 };

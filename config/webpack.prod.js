@@ -30,6 +30,13 @@ module.exports = {
           plugins: ['react-hot-loader/babel'],
         },
       },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader', },
+          { loader: 'css-loader', }
+        ],
+      },
     ],
   },
   resolve: { // allow to import both js and jsx
@@ -56,6 +63,16 @@ module.exports = {
         minifyCSS: true,
         minifyURLs: true,
       },
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        reduce_vars: false,
+      },
+      output: {
+        comments: false,
+      },
+      sourceMap: true,
     }),
   ],
 };
