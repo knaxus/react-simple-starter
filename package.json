@@ -1,0 +1,22 @@
+{
+  "name": "react-pwa-v2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ashok Dey <ashokdey100@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config=config/webpack.dev.js",
+    "serve": "webpack-dev-server --config=config/webpack.dev.js"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "webpack": "3.5.4",
+    "webpack-dev-server": "^2.11.1"
+  }
+}
