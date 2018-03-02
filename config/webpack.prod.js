@@ -33,9 +33,16 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          { loader: 'style-loader', },
-          { loader: 'css-loader', }
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
         ],
+      },
+      {
+        exclude: [/\.html$/, /\.(js|jsx)$/, /\.css$/, /\.json$/],
+        loader: 'file-loader',
+        options: {
+          name: 'static/media/[name].[ext]',
+        },
       },
     ],
   },
