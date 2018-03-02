@@ -1,8 +1,13 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    main: [path.resolve(__dirname, '../src/index.js')],
+    main: [
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:5050',
+      'webpack/hot/only-dev-server',
+      path.resolve(__dirname, '../src/index.js')],
   },
   output: {
     path: path.resolve(__dirname, '../public'),
@@ -11,9 +16,10 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, '../public'),
-    historyApiFallback: true,
+    historyApiFallback: true, // redirect 404s to index page
     inline: true,
-    overlay: true,
+    hot: true, // enable hot reload
+    overlay: true, // display errors in browaer window
     port: 5050,
   },
   module: {
@@ -24,11 +30,15 @@ module.exports = {
         exclude: /node_modules/,
         query: {
           presets: ['env', 'react'],
+          plugins: ['react-hot-loader/babel'],
         }
       }
     ],
   },
-  resolve: {
+  resolve: { // allow to import both js and jsx
     extensions: ['.js', '.jsx'],
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 }
