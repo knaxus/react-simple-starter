@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
@@ -80,6 +81,9 @@ module.exports = {
         comments: false,
       },
       sourceMap: true,
+    }),
+    new ManifestPlugin({
+      fileName: 'asset-manifest.json',
     }),
   ],
 };
