@@ -16,4 +16,16 @@ module.exports = {
     overlay: true,
     port: 5050,
   },
+  module: {
+    loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['env', 'react'],
+        }
+      }
+    ],
+  }
 }
