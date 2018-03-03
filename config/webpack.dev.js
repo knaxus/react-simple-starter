@@ -30,7 +30,7 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['env', 'react'],
+          presets: [['env', { modules: false }], 'react'],
           plugins: [
             'react-hot-loader/babel',
             'transform-object-rest-spread',
@@ -42,21 +42,21 @@ module.exports = {
         test: /\.css$/,
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader' }
+          { loader: 'css-loader' },
         ],
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          name: "fonts/[name].[ext]",
+          name: 'fonts/[name].[ext]',
         },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          name: "images/[name].[ext]",
+          name: 'images/[name].[ext]',
         },
       },
     ],
@@ -70,5 +70,6 @@ module.exports = {
       inject: true,
       template: path.resolve(__dirname, '../public/index.html'),
     }),
-  ]
+  ],
+  devtool: 'source-map',
 };

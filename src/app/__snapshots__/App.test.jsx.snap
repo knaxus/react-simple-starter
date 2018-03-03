@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render App 1`] = `
+<h1>
+  Hello React with hot reload !
+</h1>
+`;
