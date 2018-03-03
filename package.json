@@ -5,6 +5,7 @@
   "author": "Ashok Dey <ashokdey100@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "clean": "rm -rf .git && git init",
     "clear": "rm -rf build",
     "container": "node ./scripts/create_container",
     "component": "node ./scripts/create_component",
