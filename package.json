@@ -7,8 +7,8 @@
   "scripts": {
     "clean": "rm -rf .git && git init && git add . && git commit -m \"initial commit\"",
     "clear": "rm -rf build",
-    "container": "node ./scripts/create_container",
-    "component": "node ./scripts/create_component",
+    "cont": "node ./scripts/create_container",
+    "comp": "node ./scripts/create_component",
     "build": "npm run clean && node ./scripts/copy_assets && webpack --config=config/webpack.prod.js",
     "start": "webpack-dev-server --config=config/webpack.dev.js"
   },

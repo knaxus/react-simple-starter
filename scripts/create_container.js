@@ -1,18 +1,19 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-
-const fileName = process.argv[2];
 const dirBaseAddress = '../src/app';
+const argumentsLength = process.argv.length;
 
 // create directory and files using the fileName
 try {
-  fs.ensureDirSync(path.resolve(__dirname, `${dirBaseAddress}/${fileName}`));
-  fs.ensureFileSync(path.resolve(__dirname, `${dirBaseAddress}/${fileName}/component.jsx`));
-  fs.ensureFileSync(path.resolve(__dirname, `${dirBaseAddress}/${fileName}/container.jsx`));
-  fs.ensureFileSync(path.resolve(__dirname, `${dirBaseAddress}/${fileName}/actions.js`));
-  fs.ensureFileSync(path.resolve(__dirname, `${dirBaseAddress}/${fileName}/constants.js`));
-  fs.ensureFileSync(path.resolve(__dirname, `${dirBaseAddress}/${fileName}/reducer.js`));
+  for (let i = 2; i < argumentsLength; i += 1) {
+    fs.ensureDirSync(path.resolve(__dirname, `${dirBaseAddress}/${process.argv[i]}`));
+    fs.ensureFileSync(path.resolve(__dirname, `${dirBaseAddress}/${process.argv[i]}/component.jsx`));
+    fs.ensureFileSync(path.resolve(__dirname, `${dirBaseAddress}/${process.argv[i]}/container.jsx`));
+    fs.ensureFileSync(path.resolve(__dirname, `${dirBaseAddress}/${process.argv[i]}/actions.js`));
+    fs.ensureFileSync(path.resolve(__dirname, `${dirBaseAddress}/${process.argv[i]}/constants.js`));
+    fs.ensureFileSync(path.resolve(__dirname, `${dirBaseAddress}/${process.argv[i]}/reducer.js`));
+  }
 } catch (err) {
   throw new Error(err);
 }
