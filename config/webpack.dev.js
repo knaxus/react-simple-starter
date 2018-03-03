@@ -31,8 +31,12 @@ module.exports = {
         exclude: /node_modules/,
         query: {
           presets: ['env', 'react'],
-          plugins: ['react-hot-loader/babel'],
-        }
+          plugins: [
+            'react-hot-loader/babel',
+            'transform-object-rest-spread',
+            'transform-class-properties',
+          ],
+        },
       },
       {
         test: /\.css$/,

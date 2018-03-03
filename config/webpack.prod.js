@@ -12,14 +12,6 @@ module.exports = {
     filename: '[name]-bundle.js',
     publicPath: './',
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, '../public'),
-    historyApiFallback: true, // redirect 404s to index page
-    inline: true,
-    hot: true, // enable hot reload
-    overlay: true, // display errors in browaer window
-    port: 5050,
-  },
   module: {
     loaders: [
       {
@@ -28,7 +20,11 @@ module.exports = {
         exclude: /node_modules/,
         query: {
           presets: ['env', 'react'],
-          plugins: ['react-hot-loader/babel'],
+          plugins: [
+            'react-hot-loader/babel',
+            'transform-object-rest-spread',
+            'transform-class-properties',
+          ],
         },
       },
       {
