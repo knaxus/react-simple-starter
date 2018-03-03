@@ -1,7 +1,9 @@
 # React Simple Starter
 :school_satchel: Get up and running with :fire: [hot reload] and optimized production build :gem:
 
-Result of revisiting to webpack basics
+Result of revisiting to webpack basics :blush:
+
+![tech](_assets/repo.png)
 
 ## Quick start 
 - **Clone this repo**
