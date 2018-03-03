@@ -41,6 +41,20 @@ module.exports = {
           name: 'static/media/[name].[ext]',
         },
       },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        loader: "file-loader",
+        options: {
+          name: "fonts/[name].[ext]",
+        },
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        loader: "file-loader",
+        options: {
+          name: "images/[name].[ext]",
+        },
+      },
     ],
   },
   resolve: { // allow to import both js and jsx
