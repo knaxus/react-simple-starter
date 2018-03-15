@@ -24,7 +24,13 @@ module.exports = {
     port: 5050,
   },
   module: {
-    loaders: [
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      },
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',

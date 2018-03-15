@@ -6,11 +6,13 @@
   "license": "MIT",
   "scripts": {
     "quick": "npm run clean && npm install && npm start",
-    "clean": "rm -rf .git _assets README.md && git init && git add . && git commit -m \"initial commit\"",
+    "clean":
+      "rm -rf .git _assets README.md && git init && git add . && git commit -m \"initial commit\"",
     "clear": "rm -rf build",
     "cont": "node ./scripts/create_container",
     "comp": "node ./scripts/create_component",
-    "build": "npm run clean && node ./scripts/copy_assets && webpack --config=config/webpack.prod.js",
+    "build":
+      "npm run clear && node ./scripts/copy_assets && webpack --config=config/webpack.prod.js",
     "start": "webpack-dev-server --config=config/webpack.dev.js",
     "test": "jest --watch",
     "test:cover": "jest --coverage"
@@ -45,6 +47,7 @@
     "enzyme-to-json": "^3.3.1",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
@@ -61,12 +64,8 @@
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
-    "setupFiles": [
-      "./scripts/Test/jestSetup.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
+    "setupFiles": ["./scripts/Test/jestSetup.js"],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     }

@@ -13,7 +13,13 @@ module.exports = {
     publicPath: './',
   },
   module: {
-    loaders: [
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      },
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
@@ -29,10 +35,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-        ],
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       },
       {
         exclude: [/\.html$/, /\.(js|jsx)$/, /\.css$/, /\.json$/],
@@ -43,21 +46,22 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          name: "fonts/[name].[ext]",
+          name: 'fonts/[name].[ext]',
         },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          name: "images/[name].[ext]",
+          name: 'images/[name].[ext]',
         },
       },
     ],
   },
-  resolve: { // allow to import both js and jsx
+  resolve: {
+    // allow to import both js and jsx
     extensions: ['.js', '.jsx'],
   },
   plugins: [
