@@ -1,0 +1,11 @@
+body {
+  height: 100%;
+}
+
+h1 {
+  color: blueviolet;
+  margin: 0 auto;
+  font-size: 5em;
+  text-align: center;
+  padding-top: 25vh;
+}

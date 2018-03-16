@@ -8,7 +8,8 @@ module.exports = {
       'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:5050',
       'webpack/hot/only-dev-server',
-      path.resolve(__dirname, '../src/index.js')],
+      path.resolve(__dirname, '../src/index.js'),
+    ],
   },
   output: {
     path: path.resolve(__dirname, '../public'),
@@ -46,10 +47,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-        ],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
@@ -67,7 +65,8 @@ module.exports = {
       },
     ],
   },
-  resolve: { // allow to import both js and jsx
+  resolve: {
+    // allow to import both js and jsx
     extensions: ['.js', '.jsx'],
   },
   plugins: [
