@@ -5,12 +5,12 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
-    main: [path.resolve(__dirname, '../src/index.js')],
+    main: [path.resolve(__dirname, '../src/index.js')]
   },
   output: {
     path: path.resolve(__dirname, '../build'),
-    filename: '[name]-bundle.js',
-    publicPath: './',
+    filename: '[name]-[hash:8].js', // generate hashed version for cache-bursting
+    publicPath: './'
   },
   module: {
     rules: [
@@ -18,57 +18,64 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
+        use: ['eslint-loader'] // can also be like loader: 'eslint-loader'
       },
       {
         test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
         exclude: /node_modules/,
-        query: {
-          presets: ['env', 'react'],
-          plugins: [
-            'react-hot-loader/babel',
-            'transform-object-rest-spread',
-            'transform-class-properties',
-          ],
-        },
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [['env', { modules: false }], 'react'],
+            plugins: [
+              'transform-object-rest-spread',
+              'transform-class-properties'
+            ]
+          }
+        }
       },
       {
         test: /\.css$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
-      },
-      {
-        exclude: [/\.html$/, /\.(js|jsx)$/, /\.css$/, /\.json$/],
-        loader: 'file-loader',
-        options: {
-          name: 'static/media/[name].[ext]',
-        },
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'fonts/[name].[ext]',
-        },
+        use: {
+          loader: 'file-loader', // user: ['file-loader']
+          options: {
+            name: 'fonts/[name].[ext]'
+          }
+        }
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'images/[name].[ext]',
-        },
+        use: {
+          loader: 'file-loader', // user: ['file-loader']
+          options: {
+            name: 'images/[name].[ext]'
+          }
+        }
       },
-    ],
+      {
+        exclude: [/\.html$/, /\.(js|jsx)$/, /\.css$/, /\.json$/],
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'static/media/[name].[ext]'
+          }
+        }
+      }
+    ]
   },
   resolve: {
     // allow to import both js and jsx
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
+        NODE_ENV: JSON.stringify('production')
+      }
     }),
     new HtmlWebpackPlugin({
       inject: true,
@@ -83,21 +90,22 @@ module.exports = {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true,
-      },
+        minifyURLs: true
+      }
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
-        reduce_vars: false,
+        reduce_vars: false
       },
       output: {
-        comments: false,
+        comments: false
       },
-      sourceMap: true,
+      sourceMap: true
     }),
     new ManifestPlugin({
-      fileName: 'asset-manifest.json',
-    }),
+      fileName: 'asset-manifest.json'
+    })
   ],
+  devtool: 'source-map'
 };
