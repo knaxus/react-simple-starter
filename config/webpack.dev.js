@@ -53,16 +53,20 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
-        loader: 'file-loader', // user: ['file-loader']
-        options: {
-          name: 'fonts/[name].[ext]',
+        use: {
+          loader: 'file-loader', // user: ['file-loader']
+          options: {
+            name: 'fonts/[name].[ext]',
+          },
         },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
-        loader: 'file-loader', // user: ['file-loader']
-        options: {
-          name: 'images/[name].[ext]',
+        use: {
+          loader: 'file-loader', // user: ['file-loader']
+          options: {
+            name: 'images/[name].[ext]',
+          },
         },
       },
     ],

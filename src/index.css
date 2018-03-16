@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 body {
   height: 100%;
 }
@@ -8,4 +9,5 @@ h1 {
   font-size: 5em;
   text-align: center;
   padding-top: 25vh;
+  font-family: 'Dancing Script', cursive;
 }
