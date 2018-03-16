@@ -30,19 +30,21 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
+        use: ['eslint-loader'], // can also be like loader: 'eslint-loader'
       },
       {
         test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
         exclude: /node_modules/,
-        query: {
-          presets: [['env', { modules: false }], 'react'],
-          plugins: [
-            'react-hot-loader/babel',
-            'transform-object-rest-spread',
-            'transform-class-properties',
-          ],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [['env', { modules: false }], 'react'],
+            plugins: [
+              'react-hot-loader/babel',
+              'transform-object-rest-spread',
+              'transform-class-properties',
+            ],
+          },
         },
       },
       {
@@ -51,14 +53,14 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
-        loader: 'file-loader',
+        loader: 'file-loader', // user: ['file-loader']
         options: {
           name: 'fonts/[name].[ext]',
         },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
-        loader: 'file-loader',
+        loader: 'file-loader', // user: ['file-loader']
         options: {
           name: 'images/[name].[ext]',
         },
