@@ -5,15 +5,13 @@
   "author": "Ashok Dey <ashokdey100@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "webpack-dev-server --config=config/webpack.dev.js",
+    "build": "npm run clear && node ./config/custom_scripts/copy_assets && webpack --config=config/webpack.prod.js",
     "quick": "npm run clean-init && npm install && npm start",
-    "clean-init":
-      "rm -rf .git _assets README.md && git init && git add . && git commit -m \"initial commit\"",
     "clear": "rm -rf build",
+    "clean-init": "rm -rf .git _assets README.md && git init && git add . && git commit -m \"initial commit\"",
     "cont": "node ./config/custom_scripts/create_container",
     "comp": "node ./config/custom_scripts/create_component",
-    "build":
-      "npm run clear && node ./config/custom_scripts/copy_assets && webpack --config=config/webpack.prod.js",
-    "start": "webpack-dev-server --config=config/webpack.dev.js",
     "test": "jest --watch",
     "test:cover": "jest --coverage"
   },
@@ -64,8 +62,12 @@
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
-    "setupFiles": ["./config/custom_scripts/Test/jestSetup.js"],
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "setupFiles": [
+      "./config/custom_scripts/Test/jestSetup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     }
