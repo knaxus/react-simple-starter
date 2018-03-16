@@ -4,9 +4,9 @@
 
 Result of revisiting to webpack basics :blush:
 
-![tech](_assets/repo.png)
+![banner](_assets/banner.png)
 
-## Quick start
+### Quick start
 
 * **Clone this repo**
 * Run **npm run quick/yarn quick**
@@ -14,10 +14,15 @@ Result of revisiting to webpack basics :blush:
 
 ### Features
 
+![tech](_assets/repo.png)
+
 * :fire: **Hot Reload**
 * Creates files using commands
+
   * Containers with test files : `yarn cont MyContainer1 MyContainer2`
   * Component with test file: `yarn comp MyComponent1 MyConponent2`
+
+* Linting using `ESLint` following `Airbnb` style guide
 * Testing using **Jest**
 
 ### Commands
