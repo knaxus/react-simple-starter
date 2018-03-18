@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -53,6 +54,16 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
+        test: /\.scss$/,
+        use: [{
+          loader: 'style-loader', // creates style nodes from JS strings
+        }, {
+          loader: 'css-loader', // translates CSS into CommonJS
+        }, {
+          loader: 'sass-loader', // compiles Sass to CSS
+        }],
+      },
+      {
         test: /\.(ttf|eot|woff|woff2)$/,
         use: {
           loader: 'file-loader', // user: ['file-loader']
@@ -82,6 +93,9 @@ module.exports = {
       inject: true,
       template: path.resolve(__dirname, '../public/index.html'),
     }),
+    new webpack.NamedModulesPlugin(),
+    // prints more readable module names in the browser console on HMR updates
+    new ExtractTextPlugin({ filename: 'styles.css', allChunks: true }),
   ],
   devtool: 'source-map',
 };
