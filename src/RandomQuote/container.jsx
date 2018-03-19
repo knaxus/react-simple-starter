@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RamdomQuote from './component';
-import { setQuote, clearQuote } from './actions';
+import { setQuote, clearQuote, disableButton } from './actions';
 import { getDataFromAPI } from '../HandleAPICalls/actions';
 
 class RamdomQuoteContainer extends Component {
@@ -9,8 +9,11 @@ class RamdomQuoteContainer extends Component {
     super(props);
     this.getQuote = this.getQuote.bind(this);
   }
+
   getQuote() {
+    this.props.disableButton(true);
     this.props.clearQuote();
+
     this.props.getDataFromAPI(
       'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=',
       'GET',
@@ -27,6 +30,7 @@ class RamdomQuoteContainer extends Component {
         const quote = unescape(dataObject.content.replace(filterHTMLRegex, '')).replace(/\r?\n|\r/g, '');
 
         this.props.setQuote(quote, author);
+        this.props.disableButton(false);
       },
       err => console.log(err),
     );
@@ -46,11 +50,12 @@ class RamdomQuoteContainer extends Component {
 function mapSateToprops(state) {
   return {
     quote: state.quote,
-  }
+  };
 }
 
 export default connect(mapSateToprops, {
   setQuote,
   clearQuote,
+  disableButton,
   getDataFromAPI,
 })(RamdomQuoteContainer);
