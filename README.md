@@ -35,4 +35,8 @@ Result of revisiting to webpack basics :blush:
 * **test**: Run tests in watch mode
 * **quick**: Clean and install dependencies, start the server
 
+### Example app
+
+![sample app](_assets/sample-app.png)
+
 More docs will be updated soon
