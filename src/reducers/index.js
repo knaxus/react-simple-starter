@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import randomQuoteReducer from '../RandomQuote/reducer';
 
 export default combineReducers({
-  default: () => null,
+  quote: randomQuoteReducer,
 });

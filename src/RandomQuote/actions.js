@@ -3,11 +3,12 @@ import {
   CLEAR_QUOTE,
 } from './constants';
 
-export function setQuote(quote) {
+export function setQuote(quote, author) {
   return {
     type: SET_QUOTE,
     quote,
-  }
+    author,
+  };
 }
 
 export function clearQuote() {

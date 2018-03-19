@@ -5,6 +5,7 @@ import {
 
 const initialState = {
   quote: '',
+  author: '',
 };
 
 export default (state = initialState, action) => {
@@ -13,12 +14,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         quote: action.quote,
+        author: action.author,
       };
 
     case CLEAR_QUOTE:
       return {
         ...state,
         quote: '',
+        author: '',
       };
 
     default: return state;
