@@ -7,8 +7,14 @@
       ],
       "plugins": [
         "transform-es2015-modules-commonjs",
-        "dynamic-import-node"
+        "dynamic-import-node",
+        "transform-class-properties"
       ]
     }
-  }
+  },
+  "plugins": [
+    "transform-es2015-modules-commonjs",
+    "dynamic-import-node",
+    "transform-class-properties"
+  ]
 }

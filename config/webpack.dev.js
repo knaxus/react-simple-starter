@@ -1,10 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
     main: [
+      'babel-polyfill',
       'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:5050',
       'webpack/hot/only-dev-server',
@@ -52,6 +54,22 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
+        test: /\.scss$/,
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+          },
+        }, {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+          },
+        }],
+      },
+      {
         test: /\.(ttf|eot|woff|woff2)$/,
         use: {
           loader: 'file-loader', // user: ['file-loader']
@@ -81,6 +99,9 @@ module.exports = {
       inject: true,
       template: path.resolve(__dirname, '../public/index.html'),
     }),
+    new webpack.NamedModulesPlugin(),
+    // prints more readable module names in the browser console on HMR updates
+    new ExtractTextPlugin({ filename: 'styles.css', allChunks: true }),
   ],
   devtool: 'source-map',
 };
