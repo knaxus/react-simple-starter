@@ -16,10 +16,8 @@ function callToAPI(method, url, data) {
 
 // worker saga: makes the api call when watcher saga sees the action
 function* handleAPICalls(action) {
-  console.log(action);
   try {
     const response = yield call(callToAPI, action.method, action.url, action.body);
-    console.log(response);
     if (action.handleSuccess) {
       yield call(action.handleSuccess, response.data);
     }
