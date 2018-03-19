@@ -5,7 +5,8 @@ import { HANDLE_API_CALLS } from './constants';
 
 
 // function that makes the api request and returns a Promise for response
-function callToAPI({ method, url, data }) {
+function callToAPI(method, url, data) {
+  // console.log(params);
   return axios({
     method,
     url,
@@ -23,6 +24,7 @@ function* handleAPICalls(action) {
       yield call(action.handleSuccess, response.data);
     }
   } catch (err) {
+    console.log(err);
     if (!action.showToast) {
       toastr.error('ERROR', 'Failed to request');
     }

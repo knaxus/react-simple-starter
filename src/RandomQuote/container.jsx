@@ -13,8 +13,8 @@ class RamdomQuoteContainer extends Component {
       'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=',
       'GET',
       undefined,
-      response => console.log(response),
-      err => err,
+      response => console.log('response => ', response),
+      err => console.log(err),
     );
   }
 
