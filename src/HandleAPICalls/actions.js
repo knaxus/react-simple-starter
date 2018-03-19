@@ -9,17 +9,15 @@ export function getDataFromAPI(
   handleSuccess,
   handleError,
   showToast = false,
-  config,
 ) {
   return {
-    type: MAKE_API_CALL,
+    type: HANDLE_API_CALLS,
     url,
     method,
     body,
     handleSuccess,
     handleError,
-    preventToastr,
-    config,
+    showToast,
   };
 }
 

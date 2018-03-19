@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 
 import App from './app/App';
-import rootReducer from './reducer';
+import rootReducer from './reducers';
 import rootSaga from './sagas';
 
 // import css here
@@ -28,8 +28,15 @@ const store = createStore(
   compose(applyMiddleware(sagaMiddleware), reduxDevTools)
 );
 
+if (module.hot) {
+  // Enable Webpack hot module replacement for reducers
+  module.hot.accept('./reducers', () => {
+    store.replaceReducer(rootReducer);
+  });
+}
+
 // run the saga
-sagaMiddleware.run(rootSaga);
+store.runSaga = sagaMiddleware.run(rootSaga, store.dispatch);
 
 ReactDOM.render(
   <Provider store={store}>
