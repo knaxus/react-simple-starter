@@ -28,32 +28,40 @@ const store = createStore(
   compose(applyMiddleware(sagaMiddleware), reduxDevTools)
 );
 
-/**
- * Refer to this link for more about hot reloading of sagas
- * https://stackoverflow.com/questions/37148592/redux-saga-hot-reloading
- */
-
-let sagaTask = sagaMiddleware.run(function* () {
-  yield rootSaga();
-});
-
 if (module.hot) {
   // Enable Webpack hot module replacement for reducers
   module.hot.accept('./reducers', () => {
     const nextRootReducer = require('./reducers');
     store.replaceReducer(nextRootReducer);
   });
-
-  module.hot.accept('./sagas', () => {
-    const getNewSagas = require('./sagas');
-    sagaTask.cancel()
-    sagaTask.done.then(() => {
-      sagaTask = sagaMiddleware.run(function* replacedSaga(action) {
-        yield getNewSagas()
-      })
-    })
-  })
 }
+
+/**
+ * Refer to this link for more about hot reloading of sagas
+ * https://stackoverflow.com/questions/37148592/redux-saga-hot-reloading
+ */
+
+// let sagaTask = sagaMiddleware.run(function* () {
+//   yield rootSaga();
+// });
+
+// if (module.hot) {
+//   // Enable Webpack hot module replacement for reducers
+//   module.hot.accept('./reducers', () => {
+//     const nextRootReducer = require('./reducers');
+//     store.replaceReducer(nextRootReducer);
+//   });
+
+//   module.hot.accept('./sagas', () => {
+//     const getNewSagas = require('./sagas');
+//     sagaTask.cancel()
+//     sagaTask.done.then(() => {
+//       sagaTask = sagaMiddleware.run(function* replacedSaga(action) {
+//         yield getNewSagas()
+//       })
+//     })
+//   })
+// }
 
 // run the saga
 store.runSaga = sagaMiddleware.run(rootSaga, store.dispatch);
