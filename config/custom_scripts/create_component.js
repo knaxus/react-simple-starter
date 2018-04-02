@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-const dirBaseAddress = '../../src/app';
+const dirBaseAddress = '../../src';
 const argumentsLength = process.argv.length;
 
 // create directory and files using the fileName

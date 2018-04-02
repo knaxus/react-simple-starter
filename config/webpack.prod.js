@@ -5,12 +5,15 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
-    main: [path.resolve(__dirname, '../src/index.js')]
+    main: [
+      'babel-polyfill',
+      path.resolve(__dirname, '../src/index.js'),
+    ],
   },
   output: {
     path: path.resolve(__dirname, '../build'),
     filename: '[name]-[hash:8].js', // generate hashed version for cache-bursting
-    publicPath: './'
+    publicPath: './',
   },
   module: {
     rules: [
@@ -18,7 +21,7 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['eslint-loader'] // can also be like loader: 'eslint-loader'
+        use: ['eslint-loader'], // can also be like loader: 'eslint-loader'
       },
       {
         test: /\.(js|jsx)$/,
@@ -29,53 +32,67 @@ module.exports = {
             presets: [['env', { modules: false }], 'react'],
             plugins: [
               'transform-object-rest-spread',
-              'transform-class-properties'
-            ]
-          }
-        }
+              'transform-class-properties',
+            ],
+          },
+        },
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
         use: {
           loader: 'file-loader', // user: ['file-loader']
           options: {
-            name: 'fonts/[name].[ext]'
-          }
-        }
+            name: 'fonts/[name]-[hash:8].[ext]',
+          },
+        },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         use: {
           loader: 'file-loader', // user: ['file-loader']
           options: {
-            name: 'images/[name].[ext]'
-          }
-        }
+            name: 'images/[name]-[hash:8].[ext]',
+          },
+        },
+      },
+
+
+      {
+        test: /.*\.(gif|png|jpe?g)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: 'images/[name]-[hash:8].[ext]',
+              limit: 80000,
+            },
+          },
+        ],
       },
       {
         exclude: [/\.html$/, /\.(js|jsx)$/, /\.css$/, /\.json$/],
         use: {
           loader: 'file-loader',
           options: {
-            name: 'static/media/[name].[ext]'
-          }
-        }
-      }
-    ]
+            name: 'static/media/[name]-[hash:8].[ext]',
+          },
+        },
+      },
+    ],
   },
   resolve: {
     // allow to import both js and jsx
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
+        NODE_ENV: JSON.stringify('production'),
+      },
     }),
     new HtmlWebpackPlugin({
       inject: true,
@@ -90,22 +107,22 @@ module.exports = {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true
-      }
+        minifyURLs: true,
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
-        reduce_vars: false
+        reduce_vars: false,
       },
       output: {
-        comments: false
+        comments: false,
       },
-      sourceMap: true
+      sourceMap: true,
     }),
     new ManifestPlugin({
-      fileName: 'asset-manifest.json'
-    })
+      fileName: 'asset-manifest.json',
+    }),
   ],
-  devtool: 'source-map'
+  devtool: 'source-map',
 };
