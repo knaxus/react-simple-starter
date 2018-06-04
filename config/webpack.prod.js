@@ -5,10 +5,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
-    main: [
-      'babel-polyfill',
-      path.resolve(__dirname, '../src/index.js'),
-    ],
+    main: ['babel-polyfill', path.resolve(__dirname, '../src/index.js')],
   },
   output: {
     path: path.resolve(__dirname, '../build'),
@@ -30,10 +27,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [['env', { modules: false }], 'react'],
-            plugins: [
-              'transform-object-rest-spread',
-              'transform-class-properties',
-            ],
+            plugins: ['transform-object-rest-spread', 'transform-class-properties'],
           },
         },
       },
@@ -42,24 +36,19 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(ttf|eot|woff|woff2)$/,
-        use: {
-          loader: 'file-loader', // user: ['file-loader']
-          options: {
-            name: 'fonts/[name]-[hash:8].[ext]',
-          },
-        },
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         use: {
-          loader: 'file-loader', // user: ['file-loader']
+          loader: 'file-loader',
           options: {
             name: 'images/[name]-[hash:8].[ext]',
           },
         },
       },
-
 
       {
         test: /.*\.(gif|png|jpe?g)$/i,
@@ -74,7 +63,7 @@ module.exports = {
         ],
       },
       {
-        exclude: [/\.html$/, /\.(js|jsx)$/, /\.css$/, /\.json$/],
+        exclude: [/\.html$/, /\.(js|jsx)$/, /\.css$/, /\.scss$/, /\.json$/],
         use: {
           loader: 'file-loader',
           options: {
