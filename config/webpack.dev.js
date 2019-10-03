@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   entry: {
     main: [
-      'babel-polyfill',
+      '@babel/polyfill',
       'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:5050',
       'webpack/hot/only-dev-server',
@@ -40,11 +40,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [['env', { modules: false }], 'react'],
+            presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
             plugins: [
               'react-hot-loader/babel',
-              'transform-object-rest-spread',
-              'transform-class-properties',
+              '@babel/plugin-proposal-object-rest-spread',
+              '@babel/plugin-proposal-class-properties',
             ],
           },
         },
