@@ -3,10 +3,8 @@ import { takeEvery, call } from 'redux-saga/effects';
 import { toastr } from 'react-redux-toastr';
 import { HANDLE_API_CALLS } from './constants';
 
-
 // function that makes the api request and returns a Promise for response
 function callToAPI(method, url, data) {
-  // console.log(params);
   return axios({
     method,
     url,
@@ -17,11 +15,17 @@ function callToAPI(method, url, data) {
 // worker saga: makes the api call when watcher saga sees the action
 function* handleAPICalls(action) {
   try {
-    const response = yield call(callToAPI, action.method, action.url, action.body);
+    const response = yield call(
+      callToAPI,
+      action.method,
+      action.url,
+      action.body
+    );
     if (action.handleSuccess) {
       yield call(action.handleSuccess, response.data);
     }
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.log(err);
     if (!action.showToast) {
       toastr.error('ERROR', 'Failed to request');
@@ -38,8 +42,6 @@ function* callToAPIWatcher() {
 }
 
 /* eslint-disable */
-export {
-  callToAPIWatcher,
-};
+export { callToAPIWatcher };
 
 /* eslint-enable */
