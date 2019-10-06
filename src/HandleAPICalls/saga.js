@@ -19,7 +19,7 @@ function* handleAPICalls(action) {
       callToAPI,
       action.method,
       action.url,
-      action.body
+      action.body,
     );
     if (action.handleSuccess) {
       yield call(action.handleSuccess, response.data);
