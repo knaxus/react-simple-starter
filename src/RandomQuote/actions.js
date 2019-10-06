@@ -1,8 +1,4 @@
-import {
-  SET_QUOTE,
-  CLEAR_QUOTE,
-  TOGGLE_BTN_DISABLE,
-} from './constants';
+import { SET_QUOTE, CLEAR_QUOTE, TOGGLE_BTN_DISABLE } from './constants';
 
 export function setQuote(quote, author) {
   return {
