@@ -55,6 +55,7 @@
     "file-loader": "^1.1.11",
     "jest-cli": "^24.9.0",
     "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.12.3",
     "prettier-eslint": "^8.8.1",
     "react-addons-test-utils": "^15.6.2",
     "react-hot-loader": "3.0.0",
