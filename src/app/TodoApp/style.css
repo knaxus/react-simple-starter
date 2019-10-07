@@ -1,0 +1,60 @@
+input {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 50%;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+-webkit-box-shadow: 6px 0px 33px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: 6px 0px 33px -3px rgba(0,0,0,0.75);
+box-shadow: 6px 0px 33px -3px rgba(0,0,0,0.75);
+margin-top: 2%;
+}
+
+.add-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#todo-table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  margin-top: 3%;
+  -webkit-box-shadow: 6px 0px 33px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: 6px 0px 33px -3px rgba(0,0,0,0.75);
+box-shadow: 6px 0px 33px -3px rgba(0,0,0,0.75);
+}
+
+#todo-table td, #todo-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#todo-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#todo-table tr:hover {background-color: #ddd;}
+
+#todo-table tr {
+    margin-top :3%;
+}
+
+#todo-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: lightsalmon;
+  color: black;
+}
+
+.todoView-container {
+    align-items: center;
+}
