@@ -1,12 +1,12 @@
 import React from 'react';
-import RandomQuote from '../RandomQuote/container';
+import Movie from '../MovieInfo/container';
+import { POPULAR_MOVIES } from '../MovieInfo/constants';
 
 export default function App() {
   return (
     <div>
-      <h1>Hello React with Hot Reload !</h1>
-      <br />
-      <RandomQuote />
+      <h2>{POPULAR_MOVIES}</h2>
+      <Movie />
     </div>
   );
 }
