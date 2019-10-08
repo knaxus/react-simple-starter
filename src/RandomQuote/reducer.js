@@ -1,8 +1,4 @@
-import {
-  SET_QUOTE,
-  CLEAR_QUOTE,
-  TOGGLE_BTN_DISABLE,
-} from './constants';
+import { SET_QUOTE, CLEAR_QUOTE, TOGGLE_BTN_DISABLE } from './constants';
 
 const initialState = {
   quote: '',
@@ -32,6 +28,7 @@ export default (state = initialState, action) => {
         disabled: action.disabled,
       };
 
-    default: return state;
+    default:
+      return state;
   }
 };

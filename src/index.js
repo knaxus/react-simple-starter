@@ -19,13 +19,12 @@ const sagaMiddleware = createSagaMiddleware();
 /* eslint-disable */
 
 // dev tools middleware
-const reduxDevTools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
 const store = createStore(
   rootReducer,
   initialState,
-  compose(applyMiddleware(sagaMiddleware), reduxDevTools)
+  compose(applyMiddleware(sagaMiddleware), reduxDevTools),
 );
 
 if (module.hot) {
