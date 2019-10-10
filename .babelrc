@@ -2,19 +2,19 @@
   "env": {
     "test": {
       "presets": [
-        "env",
-        "react"
+        "@babel/preset-env",
+        "@babel/preset-react"
       ],
       "plugins": [
-        "transform-es2015-modules-commonjs",
+        "@babel/plugin-transform-modules-commonjs",
         "dynamic-import-node",
-        "transform-class-properties"
+        "@babel/plugin-proposal-class-properties"
       ]
     }
   },
   "plugins": [
-    "transform-es2015-modules-commonjs",
+    "@babel/plugin-transform-modules-commonjs",
     "dynamic-import-node",
-    "transform-class-properties"
+    "@babel/plugin-proposal-class-properties"
   ]
 }
