@@ -8,13 +8,15 @@
       "plugins": [
         "@babel/plugin-transform-modules-commonjs",
         "dynamic-import-node",
-        "@babel/plugin-proposal-class-properties"
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-object-rest-spread"
       ]
     }
   },
   "plugins": [
     "@babel/plugin-transform-modules-commonjs",
     "dynamic-import-node",
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
   ]
 }
