@@ -7,12 +7,10 @@ function TodoApp() {
   const [todoInput, setTodoInput] = useState("");
   return (
     <div>
-        <input type="text" name="addtodo" id="todoInput" placeholder="Enter your todos" onChange={(event)=>setTodoInput(event.target.value)}/>
+        <input type="text" name="addtodo" id="todoInput" placeholder="Enter your todos" onChange={(event)=>setTodoInput(event.target.value)} value={todoInput}/>
         <button className="add-button" onClick={
             ()=>{
-                console.log(document.getElementById("todoInput").value);
                 setTodo([...todos, todoInput && todoInput]);
-                document.getElementById("todoInput").value = "";
                 setTodoInput("");
             }}>Add</button>
         <TodoView todos={todos} />
