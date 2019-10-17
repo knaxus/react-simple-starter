@@ -15,35 +15,20 @@ class RamdomQuoteContainer extends Component {
     this.props.clearQuote();
 
     this.props.getDataFromAPI(
-      'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=',
+      'https://api.quotable.io/random',
       'GET',
-      undefined,
-      (response) => {
-        // set the quote in state
-        const dataObject = response[0];
-        /**
-         * refer here for more about this regex:
-         * https://stackoverflow.com/questions/1499889/remove-html-tags-in-javascript-with-regex
-         */
-        const filterHTMLRegex = /(<([^>]+)>)/ig;
-        const author = dataObject.title;
-        const quote = unescape(dataObject.content.replace(filterHTMLRegex, '')).replace(/\r?\n|\r/g, '');
-
-        this.props.setQuote(quote, author);
+      { per_page: 1, orderby: 'rand' },
+      ({ author, content }) => {
+        this.props.setQuote(content, author);
         this.props.disableButton(false);
-      },
-      err => console.log(err),
+      }
+      // err => console.log(err),
     );
   }
 
   render() {
     const quote = this.props.quote;
-    return (
-      <RamdomQuote
-        getQuote={this.getQuote}
-        quote={quote}
-      />
-    );
+    return <RamdomQuote getQuote={this.getQuote} quote={quote} />;
   }
 }
 

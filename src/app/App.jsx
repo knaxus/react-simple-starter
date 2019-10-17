@@ -7,6 +7,7 @@ export default function App() {
     <div>
       <h2>{POPULAR_MOVIES}</h2>
       <Movie />
+      <br />
     </div>
   );
 }
