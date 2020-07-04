@@ -1,6 +1,4 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/vinitshahdeo/HacktoberFest)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![HacktoberFest Logo](https://i.ibb.co/6Y947xj/Hacktoberfest-19-Events-1457x180.png)
 
 ---
 
@@ -46,3 +44,7 @@ Result of revisiting to webpack basics :blush:
 ![sample app](_assets/sample-app.png)
 
 More docs will be updated soon
+
+- If you use it somewhere, you have to link back to Knaxus(https://ashokdey.in/opensource)
+
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
