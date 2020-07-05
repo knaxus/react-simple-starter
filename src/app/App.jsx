@@ -1,18 +1,13 @@
 import React from 'react';
-import RandomQuote from '../RandomQuote/container';
-import TodoApp from './TodoApp/container';
+import Movie from '../MovieInfo/container';
+import { POPULAR_MOVIES } from '../MovieInfo/constants';
 
 export default function App() {
   return (
     <div>
-      <h1>Hello React with Hot Reload !</h1>
+      <h2>{POPULAR_MOVIES}</h2>
+      <Movie />
       <br />
-      <RandomQuote />
-      <br/>
-      <h1>Todos App - React hooks🔥</h1>
-      <div style={{marginLeft: '20%'}}>
-      <TodoApp />
-      </div>
     </div>
   );
 }
