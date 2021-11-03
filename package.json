@@ -29,7 +29,7 @@
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.4",
     "redux-saga": "^1.1.1",
-    "validator": "^11.1.0",
+    "validator": "^13.7.0",
     "webpack": "4.41.0",
     "webpack-manifest-plugin": "^2.2.0"
   },
